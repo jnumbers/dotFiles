@@ -94,6 +94,8 @@ alias wfirefox='WINEPREFIX="$HOME/Wine/wine32/" \
 #exports 
 #######################################
 export LANG=en_US.UTF-8
+export VISUAL=vim
+export EDITOR=vim
 
 # user functions
 #######################################

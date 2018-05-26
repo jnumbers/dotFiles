@@ -3,19 +3,6 @@ call plug#begin()
 
 	Plug 'scrooloose/nerdtree'
 
-"   function! BuildYCM(info)
-"       " info is a dictionary with 3 fields
-"       " - name:   name of the plugin
-"       " - status: 'installed', 'updated', or 'unchanged'
-"       " - force:  set on PlugInstall! or PlugUpdate!
-"       if a:info.status == 'installed' || a:info.force
-"           !./install.py
-"       endif
-"   endfunction
-
-"   Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
-    Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
-
 call plug#end()
 
 "map space to default leader '\'
@@ -24,11 +11,11 @@ map <Space> <Leader>
 "NERDTree maps and configs
 map <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>f :NERDTreeFind
+let g:NERDTreeDirArrowExpandable="+"
+let g:NERDTreeDirArrowCollapsible="~"
 "let NERDTreeMinimalUI = 1
 "let NERDTreeHighlightCursorLine = 1
 "let NERDTreeShowLineNumbers = 1
-let g:NERDTreeDirArrowExpandable="+"
-let g:NERDTreeDirArrowCollapsible="~"
 
 "tab maps
 map <C-Right> :tabnext<CR>
