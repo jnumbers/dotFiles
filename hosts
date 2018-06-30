@@ -1,0 +1,9 @@
+# Static table lookup for hostnames.
+# See hosts(5) for details.
+159.75.112.215 nw-pax-sky
+159.75.112.163 nw-pax-sky2
+159.75.112.130 rfapps1
+159.75.48.74 ma-jdichiar
+10.20.1.101 paxrf32
+10.20.1.29 irv-c62
+10.20.1.28 irv-c72
