@@ -1,0 +1,7 @@
+// Ignore all files
+*
+
+// Include only these:
+!.vimrc
+!.zshrc
+!.gitignore
