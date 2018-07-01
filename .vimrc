@@ -2,7 +2,7 @@
 """""""""
 call plug#begin()
 
-	Plug 'scrooloose/nerdtree'
+    Plug 'scrooloose/nerdtree'
     Plug 'scrooloose/nerdcommenter'
     Plug 'yuratomo/w3m.vim'
     Plug 'powerline/powerline'
