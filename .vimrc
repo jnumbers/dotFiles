@@ -5,6 +5,7 @@ call plug#begin()
 	Plug 'scrooloose/nerdtree'
     Plug 'scrooloose/nerdcommenter'
     Plug 'yuratomo/w3m.vim'
+    Plug 'powerline/powerline'
 
 call plug#end()
 
@@ -26,6 +27,14 @@ let g:NERDTreeDirArrowCollapsible="~"
 "let NERDTreeMinimalUI = 1
 "let NERDTreeHighlightCursorLine = 1
 
+"Powerline config
+"""""""""""""""""
+set rtp+=$HOME/.vim/plugged/powerline/powerline/bindings/vim
+set laststatus=2    "always show status bar
+set tabline=1       "shows # of tab lines
+set noshowmode      "hides the mode (eg. insert, visual)
+set t_Co=256        "number of colors
+
 "tab maps
 """""""""
 map <C-Right> :tabnext<CR>
@@ -42,7 +51,6 @@ set et              "expand tab to spaces
 set fdm=syntax      "fold all code
 set shiftwidth=4    "shift block width
 set scrolloff=2     "lines above & below cursor
-set laststatus=2    "
 "set ic              "ignore cases
 
 "general hilight options
