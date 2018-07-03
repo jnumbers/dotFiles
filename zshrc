@@ -74,18 +74,18 @@ alias ssh-c62='ssh pgutierr@irv-c62'
 
 # wine shortcuts
 alias wgog='WINEPREFIX="$HOME/Wine/gog/" \
-	        WINEARCH=win32 \
-	        wine ~/Wine/gog/drive_c/Program\ Files/GOG\ Galaxy/GalaxyClient.exe'
+            WINEARCH=win32 \
+            wine ~/Wine/gog/drive_c/Program\ Files/GOG\ Galaxy/GalaxyClient.exe'
 alias wsteam='WINEPREFIX="$HOME/Wine/steam/" \
-	          wine ~/Wine/steam/drive_c/Program\ Files/Steam/steam.exe -no-cef-sandbox'
+              wine ~/Wine/steam/drive_c/Program\ Files/Steam/steam.exe -no-cef-sandbox'
 alias gogFlags='WINEPREFIX="$HOME/Wine/gog/" WINEARCH=win32'
 alias steamFlags='WINEPREFIX="$HOME/Wine/steam/" WINEARCH=win32'
 alias controlFlags='WINEPREFIX="$HOME/Wine/control360/" WINEARCH=win32'
 alias wfirefox='WINEPREFIX="$HOME/Wine/wine32/" \
-	            WINEARCH=win32 \
-	            wine ~/Wine/wine32/drive_c/Program\ Files/Mozilla\ Firefox/firefox.exe'
+                WINEARCH=win32 \
+                wine ~/Wine/wine32/drive_c/Program\ Files/Mozilla\ Firefox/firefox.exe'
 
-#exports 
+#exports
 #######################################
 export LANG=en_US.UTF-8
 export VISUAL=vim
@@ -96,7 +96,7 @@ export EDITOR=vim
 
 # clone git url
 aurclone () {
-	cd ~/Packages/. 
-	git clone "https://aur.archlinux.org/$1.git" 
-	cd $1 
+    cd ~/Packages/.
+    git clone "https://aur.archlinux.org/$1.git"
+    cd $1
 }
