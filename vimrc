@@ -6,14 +6,14 @@
 """"""""""""""""""""
 "
 "_____________"
-"___general___"
+"___GENERAL___"
 map <Space> <Leader>|                   " make space leader key
 nnoremap <C-j> <C-e>|                   " scroll down
 nnoremap <C-k> <C-y>|                   " scroll up
 "map <Leader>c :set cursorline!<CR>
 
 "__________"
-"___tabs___"
+"___TABS___"
 map <silent> <C-Right> :tabnext<CR>|    " move to next tab
 map <silent> <C-Left> :tabprev<CR>|     " move to prev tab
 noremap <leader>1 1gt|                  " change to tab #
@@ -27,7 +27,7 @@ noremap <leader>8 8gt|                  " change to tab #
 noremap <leader>9 9gt|                  " change to tab #
 
 "_____________"
-"___buffers___"
+"___BUFFERS___"
 set winheight=6
 set winminheight=6                      " smallest window possible
 map <Leader>w <C-w>|                    " remap window shortcut
@@ -72,7 +72,7 @@ set encoding=utf-8
 """""""""""""""
 "
 "______________"
-"___vim.plug___"
+"___VIM.PLUG___"
 call plug#begin()
     Plug 'scrooloose/nerdtree'
     Plug 'scrooloose/nerdcommenter'
@@ -86,11 +86,11 @@ call plug#begin()
 call plug#end()
 
 "_____________"
-"___w3m.vim___"
+"___W3M.VIM___"
 let g:w3m#command = '/usr/bin/w3m'
 
 "______________"
-"___nerdtree___"
+"___NERDTREE___"
 map <Leader>n :NERDTreeToggle<CR>
 map <Leader>f :NERDTreeFind
 let NERDTreeShowLineNumbers = 1
@@ -98,8 +98,8 @@ let g:NERDTreeDirArrowExpandable = '+'
 let g:NERDTreeDirArrowCollapsible = '~'
 
 "_____________"
-"___airline___"
-set laststatus=0                         " always show status bar
+"___AIRLINE___"
+set laststatus=2                         " always show status bar
 set tabline=1                            " shows # of tab lines
 set noshowmode                           " hides the mode (eg. insert, visual)
 set t_Co=256                             " number of colors
@@ -121,7 +121,7 @@ endif
 let g:airline_symbols.maxlinenr = '  '
 
 "_____________"
-"___submode___"
+"___SUBMODE___"
 let g:submode_timeout = 0                   " disable timeouts
 let g:submode_keep_leaving_key = 1          " external cmd executes and exits submode
 call submode#enter_with('undo/redo', 'n', '', 'g-', 'g-')                                 " undo by pressing g-
@@ -145,7 +145,7 @@ call submode#map('buffWidth', 'n', 's', '<', ':exe "vert resize -6"<CR>')       
 """""""""""""""""
 "
 "__________________________"
-"___relative number line___"
+"___RELATIVE NUMBER LINE___"
 :set number relativenumber
 :augroup numbertoggle
 :  autocmd!
