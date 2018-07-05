@@ -4,36 +4,40 @@
 "---GENERAL MAPS---"
 "------------------"
 """"""""""""""""""""
-"
+
 "_____________"
 "___GENERAL___"
 map <Space> <Leader>|                   " make space leader key
-nnoremap <C-j> <C-e>|                   " scroll down
-nnoremap <C-k> <C-y>|                   " scroll up
+noremap <Leader>o o<Esc>|               " enter new line below & gt normal
+noremap <Leader>O O<Esc>|               " enter new line above & gt normal
 "map <Leader>c :set cursorline!<CR>
 
 "__________"
 "___TABS___"
-map <silent> <C-Right> :tabnext<CR>|    " move to next tab
-map <silent> <C-Left> :tabprev<CR>|     " move to prev tab
-noremap <leader>1 1gt|                  " change to tab #
-noremap <leader>2 2gt|                  " change to tab #
-noremap <leader>3 3gt|                  " change to tab #
-noremap <leader>4 4gt|                  " change to tab #
-noremap <leader>5 5gt|                  " change to tab #
-noremap <leader>6 6gt|                  " change to tab #
-noremap <leader>7 7gt|                  " change to tab #
-noremap <leader>8 8gt|                  " change to tab #
-noremap <leader>9 9gt|                  " change to tab #
+noremap <silent> <Leader>tn :tabnew<CR>|    " open new tab
+noremap <silent> <Leader>tc :tabclose<CR>|  " closes current tab
+noremap <silent> <Leader>to :tabonly<CR>|   " closes all tabs except current
+noremap <silent> <Leader>tk :tabnext<CR>|   " move to next tab
+noremap <silent> <Leader>tj :tabprev<CR>|   " move to prev tab
+noremap <leader>1 1gt|                      " change to tab #
+noremap <leader>2 2gt|                      " change to tab #
+noremap <leader>3 3gt|                      " change to tab #
+noremap <leader>4 4gt|                      " change to tab #
+noremap <leader>5 5gt|                      " change to tab #
+noremap <leader>6 6gt|                      " change to tab #
+noremap <leader>7 7gt|                      " change to tab #
+noremap <leader>8 8gt|                      " change to tab #
+noremap <leader>9 9gt|                      " change to tab #
 
 "_____________"
 "___BUFFERS___"
 set winheight=6
 set winminheight=6                      " smallest window possible
-map <Leader>w <C-w>|                    " remap window shortcut
-nnoremap <C-w>+ <C-w>=|                 " swap window same-height & increase maps
-nnoremap <leader>b <C-^>|               " enter number then map to change buffer
+map <Leader>w <C-w>|                    " window keybind
+nnoremap <C-w>+ <C-w>=|                 " swap window same-height & increase
 nnoremap <leader>bd :bd<CR>|            " delete current buffer
+nnoremap <Leader>bk :bnext<CR>|         " move to next buffer
+nnoremap <Leader>bj :bprev<CR>|         " move to prev buffer
 nnoremap <leader>b1 1<C-^>|             " change to buffer #
 nnoremap <leader>b2 2<C-^>|             " change to buffer #
 nnoremap <leader>b3 3<C-^>|             " change to buffer #
@@ -44,25 +48,43 @@ nnoremap <leader>b7 7<C-^>|             " change to buffer #
 nnoremap <leader>b8 8<C-^>|             " change to buffer #
 nnoremap <leader>b9 9<C-^>|             " change to buffer #
 
+"_____________________"
+"___SCROLL/POSITION___"
+nnoremap <C-j> <C-e>|           " scroll down
+nnoremap <C-k> <C-y>|           " scroll up
+nnoremap <C-l> zl|              " scroll left
+nnoremap <C-h> zh|              " scroll right
+nnoremap <Leader><C-j> <C-d>|   " half page down
+nnoremap <Leader><C-k> <C-u>|   " half page up
+nnoremap <Leader><C-l> zL|      " half page left
+nnoremap <Leader><C-h> zH|      " half page right
+nnoremap zj zb|                 " move window @ bottom cursor line
+nnoremap zk zt|                 " move window @ top cursor line
+
+"_________________"
+"___SYSTEM FILE___"
+nnoremap <Leader>s :w<CR>|               " saves current file
+nnoremap <Leader>q :q<CR>|               " exit window
+nnoremap <Leader>Q :q!<CR>|              " exit window w/o saving
+
 
 """"""""""""""""""""""""""""""
 "----------------------------"
 "---GENERAL CONFIG OPTIONS---"
 "----------------------------"
 """"""""""""""""""""""""""""""
-set number                              " show number line
-set nowrap                              " no wrapping to next line
-set hls                                 " high light search patterns
-set is                                  " increment search
-set ts=4                                " set tab space to 4
-set et                                  " expand tab to spaces
-set fdm=syntax                          " fold all code
-set shiftwidth=4                        " shift block width
-set scrolloff=2                         " lines above & below cursor
-set hidden
+
+set number                  " show number line
+set nowrap                  " no wrapping to next line
+set hls                     " high light search patterns
+set is                      " increment search
+set ts=4                    " set tab space to 4
+set et                      " expand tab to spaces
+set fdm=syntax              " fold all code
+set shiftwidth=4            " shift block width
+set scrolloff=2             " leave lines above & below cursor
+set hidden                  " prevent abondoning changes when buf is changed
 set encoding=utf-8
-
-
 
 
 """""""""""""""
@@ -70,19 +92,22 @@ set encoding=utf-8
 "---PLUGINS---"
 "-------------"
 """""""""""""""
-"
+
 "______________"
 "___VIM.PLUG___"
 call plug#begin()
-    Plug 'scrooloose/nerdtree'
-    Plug 'scrooloose/nerdcommenter'
-    Plug 'yuratomo/w3m.vim'
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
-    Plug 'powerline/fonts'
-    Plug 'bling/vim-bufferline'
-    Plug 'junegunn/fzf.vim'
-    Plug 'kana/vim-submode'
+    Plug 'scrooloose/nerdtree'                      " file system explorer
+    Plug 'scrooloose/nerdcommenter'                 " comment code easily
+    Plug 'vim-airline/vim-airline'                  " improves status bar
+    Plug 'vim-airline/vim-airline-themes'           " themes for airline
+    Plug 'powerline/fonts'                          " fonts needed for airline symbols
+    Plug 'bling/vim-bufferline'                     " list buffers in cmd line
+    Plug 'junegunn/fzf'                             " command line fuzzy finder
+    Plug 'junegunn/fzf.vim'                         " fzf embeded into vim
+    Plug 'kana/vim-submode'                         " repeat cmd's with a single press
+    Plug 'tpope/vim-fugitive'                       " git wrapper for vim
+"    Plug 'vim-syntastic/syntastic'
+    Plug 'yuratomo/w3m.vim'                         " w3m for vim
 call plug#end()
 
 "_____________"
@@ -118,24 +143,72 @@ let g:airline#extensions#tabline#tab_min_count = 1
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
-let g:airline_symbols.maxlinenr = '  '
+let g:airline_symbols.maxlinenr = '  '         " added spaces to prevent cutoff
+
+"function! AirlineInit()
+"  let g:airline_section_a = airline#section#create(['mode', ' ', 'hunks', 'branch'])
+"  let g:airline_section_b = airline#section#create(['%<', 'path', spc, 'readonly'])
+"  let g:airline_section_c =  airline#section#create('bufferline')
+"  let g:airline_section_a = airline#section#create(['mode', ' ', 'foo'])
+"  let g:airline_section_b = airline#section#create_left(['ffenc','file'])
+"  let g:airline_section_c = airline#section#create(['%{getcwd()}'])
+"endfunction
+"autocmd User AirlineAfterInit call AirlineInit()
+
+"________________"
+"___BUFFERLINE___"
+let g:bufferline_echo = 0                       " remove buffers from cmd line
+let g:bufferline_modified = '+'                 " symbol to denote buffer is mod.
+let g:bufferline_fname_mod = ':t'               " only includes the file name
+let g:bufferline_solo_highlight = 1             " highlight when only 1 buffer
 
 "_____________"
 "___SUBMODE___"
 let g:submode_timeout = 0                   " disable timeouts
 let g:submode_keep_leaving_key = 1          " external cmd executes and exits submode
+
 call submode#enter_with('undo/redo', 'n', '', 'g-', 'g-')                                 " undo by pressing g-
 call submode#enter_with('undo/redo', 'n', '', 'g=', 'g+')                                 " redo by pressing g-
-call submode#map('undo/redo', 'n', '', '-', 'g-')                                         " undo by repeat -
-call submode#map('undo/redo', 'n', '', '=', 'g+')                                         " undo by repeat -
+call submode#map('undo/redo', 'n', '', '-', 'g-')                                         " undo by repeat   -
+call submode#map('undo/redo', 'n', '', '=', 'g+')                                         " redo by repeat   +
+
 call submode#enter_with('buffHeight', 'n', 's', '<C-w>=', ':exe "resize +6"<CR>')         " inc height by pressing <C-w> =
-call submode#enter_with('buffHeight', 'n', 's', '<C-w>-', ':exe "resize -6"<CR>')         " inc height by pressing <C-w> -
-call submode#map('buffHeight', 'n', 's', '=', ':exe "resize +6"<CR>')                     " inc height by repeat =
-call submode#map('buffHeight', 'n', 's', '-', ':exe "resize -6"<CR>')                     " inc height by repeat -
+call submode#enter_with('buffHeight', 'n', 's', '<C-w>-', ':exe "resize -6"<CR>')         " dec height by pressing <C-w> -
+call submode#map('buffHeight', 'n', 's', '=', ':exe "resize +6"<CR>')                     " inc height by repeat    =
+call submode#map('buffHeight', 'n', 's', '-', ':exe "resize -6"<CR>')                     " dec height by repeat    -
+
 call submode#enter_with('buffWidth', 'n', 's', '<C-w>>', ':exe "vert resize +6"<CR>')     " inc width by pressing <C-w> >
-call submode#enter_with('buffWidth', 'n', 's', '<C-w><', ':exe "vert resize -6"<CR>')     " inc width by pressing <C-w> <
-call submode#map('buffWidth', 'n', 's', '>', ':exe "vert resize +6"<CR>')                 " inc width by repeat =
-call submode#map('buffWidth', 'n', 's', '<', ':exe "vert resize -6"<CR>')                 " inc width by repeat -
+call submode#enter_with('buffWidth', 'n', 's', '<C-w><', ':exe "vert resize -6"<CR>')     " dec width by pressing <C-w> <
+call submode#map('buffWidth', 'n', 's', '>', ':exe "vert resize +6"<CR>')                 " inc width by repeat    =
+call submode#map('buffWidth', 'n', 's', '<', ':exe "vert resize -6"<CR>')                 " dec width by repeat    -
+
+call submode#enter_with('chTab', 'n', '', '<Leader>tk', ':tabnext<CR>')                   " next tab by pressing <Leader><tk
+call submode#enter_with('chTab', 'n', '', '<Leader>tj', ':tabprev<CR>')                   " prev tab by pressing <Leader><tj
+call submode#map('chTab', 'n', '', 'k', ':tabnext<CR>')                                   " next tab by repeat    k
+call submode#map('chTab', 'n', '', 'j', ':tabprev<CR>')                                   " prev tab by repeat    j
+
+call submode#enter_with('chBuff', 'n', '', '<Leader>bk', ':bnext<CR>')                    " next buffer by pressing <Leader><bk
+call submode#enter_with('chBuff', 'n', '', '<Leader>bj', ':bprev<CR>')                    " prev buffer by pressing <Leader><bj
+call submode#map('chBuff', 'n', '', 'k', ':bnext<CR>')                                    " next buffer by repeat    k
+call submode#map('chBuff', 'n', '', 'j', ':bprev<CR>')                                    " prev buffer by repeat    j
+
+call submode#enter_with('scrolling', 'n', '', '<C-j>', '<C-e><C-e>')                      " scroll down  by pressing <C-j> x2
+call submode#enter_with('scrolling', 'n', '', '<C-k>', '<C-y><C-y>')                      " scroll up    by pressing <C-k> x2
+call submode#enter_with('scrolling', 'n', '', '<C-l>', 'zlzlzlzl')                        " scroll right by pressing <C-l> x4
+call submode#enter_with('scrolling', 'n', '', '<C-h>', 'zhzhzhzh')                        " scroll left  by pressing <C-h> x4
+call submode#map('scrolling', 'n', '', 'j', '<C-e><C-e>')                                 " scroll down  by repeat    j    x2
+call submode#map('scrolling', 'n', '', 'k', '<C-y><C-y>')                                 " scroll up    by repeat    k    x2
+call submode#map('scrolling', 'n', '', 'l', 'zlzlzlzl')                                   " scroll right by repeat    l    x4
+call submode#map('scrolling', 'n', '', 'h', 'zhzhzhzh')                                   " scroll left  by repeat    h    x4
+
+call submode#enter_with('halfPage', 'n', '', '<Leader><C-j>', '<C-e>')                    " half pg down  by pressing <Leader><C-j>
+call submode#enter_with('halfPage', 'n', '', '<Leader><C-k>', '<C-y>')                    " half pg up    by pressing <Leader><C-k>
+call submode#enter_with('halfPage', 'n', '', '<Leader><C-l>', 'zl')                       " half pg right by pressing <Leader><C-l>
+call submode#enter_with('halfPage', 'n', '', '<Leader><C-h>', 'zh')                       " half pg left  by pressing <Leader><C-h>
+call submode#map('halfPage', 'n', '', 'j', '<C-d>')                                       " half pg down  by repeat    j
+call submode#map('halfPage', 'n', '', 'k', '<C-u>')                                       " half pg up    by repeat    k
+call submode#map('halfPage', 'n', '', 'l', 'zL')                                          " half pg right by repeat    l
+call submode#map('halfPage', 'n', '', 'h', 'zH')                                          " half pg left  by repeat    h
 
 
 """""""""""""""""
@@ -143,13 +216,13 @@ call submode#map('buffWidth', 'n', 's', '<', ':exe "vert resize -6"<CR>')       
 "---FUNCTIONS---"
 "---------------"
 """""""""""""""""
-"
+
 "__________________________"
 "___RELATIVE NUMBER LINE___"
 :set number relativenumber
 :augroup numbertoggle
 :  autocmd!
-:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber            " relative nr when focused
+:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber          " normal nw when not focused
 :augroup END
 

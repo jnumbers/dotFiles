@@ -21,6 +21,7 @@ promptinit
 PS1='%F{blue}%n%f@%F{blue}%m%f: %F{blue}%~%f$ '
 
 neofetch
+alias clear='clear && neofetch'
 
 # alias vars
 ######################################
@@ -49,6 +50,10 @@ alias lr='ls -ltrF'
 
 # aur
 alias aurupdate='for dir in ~/Packages/*; do (cd "$dir" && pwd && git pull); done'
+
+# grep word in file
+alias gword='grep -rnw . -e $1'
+alias gpart='grep -rn . -e $1'
 
 # vpn
 alias vpn-connect='sudo systemctl start vpnc@workVpn.service'
