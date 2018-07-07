@@ -10,7 +10,7 @@
 map <Space> <Leader>|                   " make space leader key
 noremap <Leader>o o<Esc>|               " enter new line below & gt normal
 noremap <Leader>O O<Esc>|               " enter new line above & gt normal
-"map <Leader>c :set cursorline!<CR>
+noremap <Leader>m :set cursorline!<CR>
 
 "__________"
 "___TABS___"
@@ -85,6 +85,8 @@ set shiftwidth=4            " shift block width
 set scrolloff=2             " leave lines above & below cursor
 set hidden                  " prevent abondoning changes when buf is changed
 set encoding=utf-8
+set cursorline
+hi CursorLine ctermbg=236 cterm=bold
 
 
 """""""""""""""
