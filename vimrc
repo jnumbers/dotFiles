@@ -1,3 +1,9 @@
+function! AirlineInit()
+  let g:airline_section_a = airline#section#create(['mode', ' ', 'branch'])
+  let g:airline_section_b = airline#section#create_left(['path', 'readonly'])
+  let g:airline_section_c = ''
+endfunction
+autocmd User AirlineAfterInit call AirlineInit()
 
 """"""""""""""""""""""""""""""
 "----------------------------"
@@ -14,6 +20,10 @@ set scrolloff=2             " leave lines above & below cursor
 set hidden                  " prevent abondoning changes when buf is changed
 set noswapfile              " prevent vim from creating swap files
 set showcmd                 " show keys pressed in cmd line
+set laststatus=2            " always show status bar
+set tabline=1               " shows # of tab lines
+set noshowmode              " hides the mode (eg. insert, visual)
+set t_Co=256                " number of colors
 set encoding=utf-8
 
 "____________________"
@@ -121,6 +131,7 @@ call plug#begin()
     Plug 'junegunn/fzf.vim'                         " fzf embeded into vim
     Plug 'kana/vim-submode'                         " repeat cmd's with a single press
     Plug 'tpope/vim-fugitive'                       " git wrapper for vim
+    Plug 'tpope/vim-capslock'                       " git wrapper for vim
     "Plug 'vim-syntastic/syntastic'
     Plug 'yuratomo/w3m.vim'                         " w3m for vim
 call plug#end()
@@ -139,42 +150,32 @@ let g:NERDTreeDirArrowCollapsible = '~'
 
 "_____________"
 "___AIRLINE___"
-set laststatus=2                         " always show status bar
-set tabline=1                            " shows # of tab lines
-set noshowmode                           " hides the mode (eg. insert, visual)
-set t_Co=256                             " number of colors
-let g:airline_theme='bubblegum'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_tabs = 0
-let g:airline#extensions#tabline#show_buffers = 1
-"let g:airline#extensions#tabline#formatter = 'default'
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline#extensions#tabline#show_tab_nr = 0
-let g:airline#extensions#tabline#show_tab_type = 1
-let g:airline#extensions#tabline#buf_label_first = 1
-let g:airline#extensions#tabline#keymap_ignored_filetypes =['nerdtree']
-let g:airline#extensions#tabline#buffers_label = 'Buffers'
-"let g:airline#extensions#tabline#excludes = ["[No Name]"]
-  let g:airline#extensions#tabline#exclude_preview = 0
-let g:airline#extensions#tabline#tab_min_count = 1
+let g:airline_theme='bubblegum'                                 " select theme
+let g:airline_powerline_fonts = 1                               " enables powerline fonts
+let g:airline#extensions#tabline#enabled = 1                    " enable tabline
+let g:airline#extensions#tabline#buf_label_first = 1            " place buffers on the left
+let g:airline#extensions#tabline#show_tabs = 0                  " disable tabs from being shown
+let g:airline#extensions#tabline#fnamemod = ':t'                " display filename only & not pwd
+let g:airline#extensions#tabline#buffer_idx_mode = 1            " show buffer tab index not b#
+let g:airline#extensions#tabline#buffers_label = 'Buffers'      " display buffer label
 
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 let g:airline_symbols.maxlinenr = '  '         " added spaces to prevent cutoff
 
-function! AirlineInit()
-"  let g:airline_section_a = airline#section#create(['mode', ' ', 'hunks', 'branch'])
-"  let g:airline_section_b = airline#section#create(['%<', 'path', spc, 'readonly'])
-"  let g:airline_section_c =  airline#section#create('bufferline')
+"function! AirlineInit()
+  "let g:airline_section_a = airline#section#create(['mode', ' ', 'hunks', 'branch'])
+  "let g:airline_section_b = airline#section#create(['%<', 'path', spc, 'readonly'])
+  "let g:airline_section_c =  airline#section#create('bufferline')
   "let g:airline_section_c = 'Tab1  Tab2  Tab3 '
-"  let g:airline_section_a = airline#section#create(['mode', ' ', 'foo'])
-"  let g:airline_section_b = airline#section#create_left(['ffenc','file'])
-"  let g:airline_section_c = airline#section#create(['%{getcwd()}'])
-endfunction
-autocmd User AirlineAfterInit call AirlineInit()
+  "let g:airline_section_b = '%~'
+  "let g:airline_section_c = ''
+  "let g:airline_section_a = airline#section#create(['mode', ' ', 'foo'])
+  "let g:airline_section_b = airline#section#create_left(['ffenc','file'])
+  "let g:airline_section_c = airline#section#create(['%{getcwd()}'])
+"endfunction
+"autocmd User AirlineAfterInit call AirlineInit()
 
 "________________"
 "___BUFFERLINE___"
@@ -210,10 +211,6 @@ call submode#enter_with('chTab', 'n', '', '<Leader>tj', ':tabprev<CR>')         
 call submode#map('chTab', 'n', '', 'k', ':tabnext<CR>')                                   " next tab by repeat    k
 call submode#map('chTab', 'n', '', 'j', ':tabprev<CR>')                                   " prev tab by repeat    j
 
-"call submode#enter_with('chBuff', 'n', '', '<Leader>bk', '<Plug>AirlineSelectNextTab')    " next buffer by pressing <Leader><bk
-"call submode#enter_with('chBuff', 'n', '', '<Leader>bj', '<Plug>AirlineSelectPrevTab')    " prev buffer by pressing <Leader><bj
-"call submode#map('chBuff', 'n', '', 'k', '<Plug>AirlineSelectNextTab')                    " next buffer by repeat    k
-"call submode#map('chBuff', 'n', '', 'j', '<Plug>AirlineSelectPrevTab')                    " prev buffer by repeat    j
 call submode#enter_with('chBuff', 'n', '', '<Leader>bk', ':bnext<CR>')                    " next buffer by pressing <Leader><bk
 call submode#enter_with('chBuff', 'n', '', '<Leader>bj', ':bprev<CR>')                    " prev buffer by pressing <Leader><bj
 call submode#map('chBuff', 'n', '', 'k', ':bnext<CR>')                                    " next buffer by repeat    k
@@ -232,6 +229,10 @@ call submode#enter_with('halfPage', 'n', '', '<Leader><C-j>', '<C-e>')          
 call submode#enter_with('halfPage', 'n', '', '<Leader><C-k>', '<C-y>')                    " half pg up    by pressing <Leader><C-k>
 call submode#enter_with('halfPage', 'n', '', '<Leader><C-l>', 'zl')                       " half pg right by pressing <Leader><C-l>
 call submode#enter_with('halfPage', 'n', '', '<Leader><C-h>', 'zh')                       " half pg left  by pressing <Leader><C-h>
+call submode#map('halfPage', 'n', '', '<C-j>', '<C-d>')                                   " half pg down  by repeat   <C-j>
+call submode#map('halfPage', 'n', '', '<C-k>', '<C-u>')                                   " half pg up    by repeat   <C-k>
+call submode#map('halfPage', 'n', '', '<C-l>', 'zL')                                      " half pg right by repeat   <C-l>
+call submode#map('halfPage', 'n', '', '<C-h>', 'zH')                                      " half pg left  by repeat   <C-h>
 call submode#map('halfPage', 'n', '', 'j', '<C-d>')                                       " half pg down  by repeat    j
 call submode#map('halfPage', 'n', '', 'k', '<C-u>')                                       " half pg up    by repeat    k
 call submode#map('halfPage', 'n', '', 'l', 'zL')                                          " half pg right by repeat    l
