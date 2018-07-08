@@ -1,4 +1,37 @@
 
+""""""""""""""""""""""""""""""
+"----------------------------"
+"---GENERAL CONFIG OPTIONS---"
+"----------------------------"
+""""""""""""""""""""""""""""""
+
+set nowrap                  " no wrapping to next line
+set tabstop=4               " set tab space to 4
+set expandtab               " expand tabs to spaces
+set foldmethod=syntax       " fold all code
+set shiftwidth=4            " shift block width
+set scrolloff=2             " leave lines above & below cursor
+set hidden                  " prevent abondoning changes when buf is changed
+set noswapfile              " prevent vim from creating swap files
+set showcmd                 " show keys pressed in cmd line
+set encoding=utf-8
+
+"____________________"
+"___PATTERN SEARCH___"
+set hlsearch                " high light search patterns
+set incsearch               " find patter as you type
+set ignorecase              " ignore case when searching
+set smartcase               " stop ignorecase when searching w/ caps
+
+"____________________"
+"___CURSOR OPTIONS___"
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"        " insert mode cursor
+let &t_SR = "\<Esc>]50;CursorShape=2\x7"        " replace mode cursor
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"        " switch back to block cursor
+set cursorline                                  " cursor highlight on start
+hi CursorLine ctermbg=236 cterm=bold|           " cursor highlight color
+
+
 """"""""""""""""""""
 "------------------"
 "---GENERAL MAPS---"
@@ -7,46 +40,47 @@
 
 "_____________"
 "___GENERAL___"
-map <Space> <Leader>|                   " make space leader key
-noremap <Leader>o o<Esc>|               " enter new line below & gt normal
-noremap <Leader>O O<Esc>|               " enter new line above & gt normal
-noremap <Leader>m :set cursorline!<CR>
+map <Space> <Leader>|                       " make space leader key
+noremap <Leader>o o<Esc>|                   " enter new line below & gt normal
+noremap <Leader>O O<Esc>|                   " enter new line above & gt normal
+nnoremap <Leader>, :noh<CR>|                " stops highlight from search
+noremap <Leader>m :set cursorline!<CR>      " toggle cursor line
 
 "__________"
 "___TABS___"
-noremap <silent> <Leader>tn :tabnew<CR>|    " open new tab
-noremap <silent> <Leader>tc :tabclose<CR>|  " closes current tab
-noremap <silent> <Leader>to :tabonly<CR>|   " closes all tabs except current
-noremap <silent> <Leader>tk :tabnext<CR>|   " move to next tab
-noremap <silent> <Leader>tj :tabprev<CR>|   " move to prev tab
-noremap <leader>1 1gt|                      " change to tab #
-noremap <leader>2 2gt|                      " change to tab #
-noremap <leader>3 3gt|                      " change to tab #
-noremap <leader>4 4gt|                      " change to tab #
-noremap <leader>5 5gt|                      " change to tab #
-noremap <leader>6 6gt|                      " change to tab #
-noremap <leader>7 7gt|                      " change to tab #
-noremap <leader>8 8gt|                      " change to tab #
-noremap <leader>9 9gt|                      " change to tab #
+noremap <silent> <Leader>tn :tabnew<CR>|        " open new tab
+noremap <silent> <Leader>tc :tabclose<CR>|      " closes current tab
+noremap <silent> <Leader>to :tabonly<CR>|       " closes all tabs except current
+noremap <silent> <Leader>tk :tabnext<CR>|       " move to next tab
+noremap <silent> <Leader>tj :tabprev<CR>|       " move to prev tab
+noremap <Leader>t1 1gt|                         " change to tab #
+noremap <Leader>t2 2gt|                         " change to tab #
+noremap <Leader>t3 3gt|                         " change to tab #
+noremap <Leader>t4 4gt|                         " change to tab #
+noremap <Leader>t5 5gt|                         " change to tab #
+noremap <Leader>t6 6gt|                         " change to tab #
+noremap <Leader>t7 7gt|                         " change to tab #
+noremap <Leader>t8 8gt|                         " change to tab #
+noremap <Leader>t9 9gt|                         " change to tab #
 
 "_____________"
 "___BUFFERS___"
 set winheight=6
-set winminheight=6                      " smallest window possible
-map <Leader>w <C-w>|                    " window keybind
-nnoremap <C-w>+ <C-w>=|                 " swap window same-height & increase
-nnoremap <leader>bd :bd<CR>|            " delete current buffer
-nnoremap <Leader>bk :bnext<CR>|         " move to next buffer
-nnoremap <Leader>bj :bprev<CR>|         " move to prev buffer
-nnoremap <leader>b1 1<C-^>|             " change to buffer #
-nnoremap <leader>b2 2<C-^>|             " change to buffer #
-nnoremap <leader>b3 3<C-^>|             " change to buffer #
-nnoremap <leader>b4 4<C-^>|             " change to buffer #
-nnoremap <leader>b5 5<C-^>|             " change to buffer #
-nnoremap <leader>b6 6<C-^>|             " change to buffer #
-nnoremap <leader>b7 7<C-^>|             " change to buffer #
-nnoremap <leader>b8 8<C-^>|             " change to buffer #
-nnoremap <leader>b9 9<C-^>|             " change to buffer #
+set winminheight=6                          " smallest window possible
+map <Leader>w <C-w>|                        " window keybind
+nnoremap <C-w>+ <C-w>=|                     " swap window same-height & increase
+nnoremap <leader>bd :bd<CR>|                " delete current buffer
+nnoremap <Leader>bk :bnext<CR>|             " move to next buffer
+nnoremap <Leader>bj :bprev<CR>|             " move to prev buffer
+nmap <leader>1 <Plug>AirlineSelectTab1      " change to buffer #
+nmap <leader>2 <Plug>AirlineSelectTab2      " change to buffer #
+nmap <leader>3 <Plug>AirlineSelectTab3      " change to buffer #
+nmap <leader>4 <Plug>AirlineSelectTab4      " change to buffer #
+nmap <leader>5 <Plug>AirlineSelectTab5      " change to buffer #
+nmap <leader>6 <Plug>AirlineSelectTab6      " change to buffer #
+nmap <leader>7 <Plug>AirlineSelectTab7      " change to buffer #
+nmap <leader>8 <Plug>AirlineSelectTab8      " change to buffer #
+nmap <leader>9 <Plug>AirlineSelectTab9      " change to buffer #
 
 "_____________________"
 "___SCROLL/POSITION___"
@@ -68,27 +102,6 @@ nnoremap <Leader>q :q<CR>|               " exit window
 nnoremap <Leader>Q :q!<CR>|              " exit window w/o saving
 
 
-""""""""""""""""""""""""""""""
-"----------------------------"
-"---GENERAL CONFIG OPTIONS---"
-"----------------------------"
-""""""""""""""""""""""""""""""
-
-set number                  " show number line
-set nowrap                  " no wrapping to next line
-set hls                     " high light search patterns
-set is                      " increment search
-set ts=4                    " set tab space to 4
-set et                      " expand tab to spaces
-set fdm=syntax              " fold all code
-set shiftwidth=4            " shift block width
-set scrolloff=2             " leave lines above & below cursor
-set hidden                  " prevent abondoning changes when buf is changed
-set encoding=utf-8
-set cursorline
-hi CursorLine ctermbg=236 cterm=bold
-
-
 """""""""""""""
 "-------------"
 "---PLUGINS---"
@@ -103,12 +116,12 @@ call plug#begin()
     Plug 'vim-airline/vim-airline'                  " improves status bar
     Plug 'vim-airline/vim-airline-themes'           " themes for airline
     Plug 'powerline/fonts'                          " fonts needed for airline symbols
-    Plug 'bling/vim-bufferline'                     " list buffers in cmd line
+    "Plug 'bling/vim-bufferline'                     " list buffers in cmd line
     Plug 'junegunn/fzf'                             " command line fuzzy finder
     Plug 'junegunn/fzf.vim'                         " fzf embeded into vim
     Plug 'kana/vim-submode'                         " repeat cmd's with a single press
     Plug 'tpope/vim-fugitive'                       " git wrapper for vim
-"    Plug 'vim-syntastic/syntastic'
+    "Plug 'vim-syntastic/syntastic'
     Plug 'yuratomo/w3m.vim'                         " w3m for vim
 call plug#end()
 
@@ -133,13 +146,18 @@ set t_Co=256                             " number of colors
 let g:airline_theme='bubblegum'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_buffers = 0
-let g:airline#extensions#tabline#formatter = 'default'
-let g:airline#extensions#tabline#tab_nr_type = 1
-let g:airline#extensions#tabline#show_tab_nr = 1
+let g:airline#extensions#tabline#show_tabs = 0
+let g:airline#extensions#tabline#show_buffers = 1
+"let g:airline#extensions#tabline#formatter = 'default'
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#show_tab_nr = 0
 let g:airline#extensions#tabline#show_tab_type = 1
-let g:airline#extensions#tabline#buf_label_first = 0
+let g:airline#extensions#tabline#buf_label_first = 1
 let g:airline#extensions#tabline#keymap_ignored_filetypes =['nerdtree']
+let g:airline#extensions#tabline#buffers_label = 'Buffers'
+"let g:airline#extensions#tabline#excludes = ["[No Name]"]
+  let g:airline#extensions#tabline#exclude_preview = 0
 let g:airline#extensions#tabline#tab_min_count = 1
 
 if !exists('g:airline_symbols')
@@ -147,22 +165,23 @@ if !exists('g:airline_symbols')
 endif
 let g:airline_symbols.maxlinenr = '  '         " added spaces to prevent cutoff
 
-"function! AirlineInit()
+function! AirlineInit()
 "  let g:airline_section_a = airline#section#create(['mode', ' ', 'hunks', 'branch'])
 "  let g:airline_section_b = airline#section#create(['%<', 'path', spc, 'readonly'])
 "  let g:airline_section_c =  airline#section#create('bufferline')
+  "let g:airline_section_c = 'Tab1  Tab2  Tab3 '
 "  let g:airline_section_a = airline#section#create(['mode', ' ', 'foo'])
 "  let g:airline_section_b = airline#section#create_left(['ffenc','file'])
 "  let g:airline_section_c = airline#section#create(['%{getcwd()}'])
-"endfunction
-"autocmd User AirlineAfterInit call AirlineInit()
+endfunction
+autocmd User AirlineAfterInit call AirlineInit()
 
 "________________"
 "___BUFFERLINE___"
-let g:bufferline_echo = 0                       " remove buffers from cmd line
-let g:bufferline_modified = '+'                 " symbol to denote buffer is mod.
-let g:bufferline_fname_mod = ':t'               " only includes the file name
-let g:bufferline_solo_highlight = 1             " highlight when only 1 buffer
+"let g:bufferline_echo = 0                       " remove buffers from cmd line
+"let g:bufferline_modified = '+'                 " symbol to denote buffer is mod.
+"let g:bufferline_fname_mod = ':t'               " only includes the file name
+"let g:bufferline_solo_highlight = 1             " highlight when only 1 buffer
 
 "_____________"
 "___SUBMODE___"
@@ -181,14 +200,20 @@ call submode#map('buffHeight', 'n', 's', '-', ':exe "resize -6"<CR>')           
 
 call submode#enter_with('buffWidth', 'n', 's', '<C-w>>', ':exe "vert resize +6"<CR>')     " inc width by pressing <C-w> >
 call submode#enter_with('buffWidth', 'n', 's', '<C-w><', ':exe "vert resize -6"<CR>')     " dec width by pressing <C-w> <
-call submode#map('buffWidth', 'n', 's', '>', ':exe "vert resize +6"<CR>')                 " inc width by repeat    =
-call submode#map('buffWidth', 'n', 's', '<', ':exe "vert resize -6"<CR>')                 " dec width by repeat    -
+call submode#map('buffWidth', 'n', 's', '>', ':exe "vert resize +6"<CR>')                 " inc width by repeat    >
+call submode#map('buffWidth', 'n', 's', '<', ':exe "vert resize -6"<CR>')                 " dec width by repeat    <
+call submode#map('buffWidth', 'n', 's', '.', ':exe "vert resize +6"<CR>')                 " inc width by repeat    .
+call submode#map('buffWidth', 'n', 's', ',', ':exe "vert resize -6"<CR>')                 " dec width by repeat    ,
 
 call submode#enter_with('chTab', 'n', '', '<Leader>tk', ':tabnext<CR>')                   " next tab by pressing <Leader><tk
 call submode#enter_with('chTab', 'n', '', '<Leader>tj', ':tabprev<CR>')                   " prev tab by pressing <Leader><tj
 call submode#map('chTab', 'n', '', 'k', ':tabnext<CR>')                                   " next tab by repeat    k
 call submode#map('chTab', 'n', '', 'j', ':tabprev<CR>')                                   " prev tab by repeat    j
 
+"call submode#enter_with('chBuff', 'n', '', '<Leader>bk', '<Plug>AirlineSelectNextTab')    " next buffer by pressing <Leader><bk
+"call submode#enter_with('chBuff', 'n', '', '<Leader>bj', '<Plug>AirlineSelectPrevTab')    " prev buffer by pressing <Leader><bj
+"call submode#map('chBuff', 'n', '', 'k', '<Plug>AirlineSelectNextTab')                    " next buffer by repeat    k
+"call submode#map('chBuff', 'n', '', 'j', '<Plug>AirlineSelectPrevTab')                    " prev buffer by repeat    j
 call submode#enter_with('chBuff', 'n', '', '<Leader>bk', ':bnext<CR>')                    " next buffer by pressing <Leader><bk
 call submode#enter_with('chBuff', 'n', '', '<Leader>bj', ':bprev<CR>')                    " prev buffer by pressing <Leader><bj
 call submode#map('chBuff', 'n', '', 'k', ':bnext<CR>')                                    " next buffer by repeat    k
@@ -219,8 +244,7 @@ call submode#map('halfPage', 'n', '', 'h', 'zH')                                
 "---------------"
 """""""""""""""""
 
-"__________________________"
-"___RELATIVE NUMBER LINE___"
+" removes relative number line when not focused
 :set number relativenumber
 :augroup numbertoggle
 :  autocmd!
@@ -228,3 +252,9 @@ call submode#map('halfPage', 'n', '', 'h', 'zH')                                
 :  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber          " normal nw when not focused
 :augroup END
 
+" removes highlight cursor when not focused
+:augroup cursorFocus
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave * set cursorline                " cursor highlight when focused
+:  autocmd BufLeave,FocusLost,InsertEnter   * set nocursorline              " no cursor when not focused
+:augroup END
