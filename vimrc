@@ -1,9 +1,3 @@
-function! AirlineInit()
-  let g:airline_section_a = airline#section#create(['mode', ' ', 'branch'])
-  let g:airline_section_b = airline#section#create_left(['path', 'readonly'])
-  let g:airline_section_c = ''
-endfunction
-autocmd User AirlineAfterInit call AirlineInit()
 
 """"""""""""""""""""""""""""""
 "----------------------------"
@@ -119,6 +113,7 @@ nnoremap <Leader>Q :q!<CR>|              " exit window w/o saving
 """""""""""""""
 
 "______________"
+"A
 "___VIM.PLUG___"
 call plug#begin()
     Plug 'scrooloose/nerdtree'                      " file system explorer
@@ -159,23 +154,14 @@ let g:airline#extensions#tabline#fnamemod = ':t'                " display filena
 let g:airline#extensions#tabline#buffer_idx_mode = 1            " show buffer tab index not b#
 let g:airline#extensions#tabline#buffers_label = 'Buffers'      " display buffer label
 
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-let g:airline_symbols.maxlinenr = '  '         " added spaces to prevent cutoff
-
-"function! AirlineInit()
-  "let g:airline_section_a = airline#section#create(['mode', ' ', 'hunks', 'branch'])
-  "let g:airline_section_b = airline#section#create(['%<', 'path', spc, 'readonly'])
-  "let g:airline_section_c =  airline#section#create('bufferline')
-  "let g:airline_section_c = 'Tab1  Tab2  Tab3 '
-  "let g:airline_section_b = '%~'
-  "let g:airline_section_c = ''
-  "let g:airline_section_a = airline#section#create(['mode', ' ', 'foo'])
-  "let g:airline_section_b = airline#section#create_left(['ffenc','file'])
-  "let g:airline_section_c = airline#section#create(['%{getcwd()}'])
-"endfunction
-"autocmd User AirlineAfterInit call AirlineInit()
+function! AirlineInit()
+  let g:airline_section_a = airline#section#create(['mode', ' ', 'branch'])
+  let g:airline_section_b = airline#section#create_left(['path', 'readonly'])
+  let g:airline_section_c = ""
+  let g:airline_section_z = airline#section#create_right(['%l ', '%L ☰', '%p%%'])
+  "let g:airline_section_z = airline#section#create_right(['%l ', '%L ☰', '%v ‖', '%p%%'])
+endfunction
+autocmd User AirlineAfterInit call AirlineInit()
 
 "________________"
 "___BUFFERLINE___"
