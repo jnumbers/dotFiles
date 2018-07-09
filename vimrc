@@ -74,8 +74,8 @@ set winminheight=6                          " smallest window possible
 map <Leader>w <C-w>|                        " window keybind
 nnoremap <C-w>+ <C-w>=|                     " swap window same-height & increase
 nnoremap <leader>bd :bd<CR>|                " delete current buffer
-nnoremap <Leader>bk :bnext<CR>|             " move to next buffer
-nnoremap <Leader>bj :bprev<CR>|             " move to prev buffer
+nmap <Leader>bk :bnext<CR>|                 " move to next buffer
+nmap <Leader>bj :bprev<CR>|                 " move to prev buffer
 nmap <leader>1 <Plug>AirlineSelectTab1      " change to buffer #
 nmap <leader>2 <Plug>AirlineSelectTab2      " change to buffer #
 nmap <leader>3 <Plug>AirlineSelectTab3      " change to buffer #
@@ -85,6 +85,8 @@ nmap <leader>6 <Plug>AirlineSelectTab6      " change to buffer #
 nmap <leader>7 <Plug>AirlineSelectTab7      " change to buffer #
 nmap <leader>8 <Plug>AirlineSelectTab8      " change to buffer #
 nmap <leader>9 <Plug>AirlineSelectTab9      " change to buffer #
+
+
 
 "_____________________"
 "___SCROLL/POSITION___"
@@ -153,6 +155,32 @@ let g:airline#extensions#tabline#show_tabs = 0                  " disable tabs f
 let g:airline#extensions#tabline#fnamemod = ':t'                " display filename only & not pwd
 let g:airline#extensions#tabline#buffer_idx_mode = 1            " show buffer tab index not b#
 let g:airline#extensions#tabline#buffers_label = 'Buffers'      " display buffer label
+let g:airline#extensions#tabline#buffer_idx_format = {
+                                                     \ '0': '0 ',
+                                                     \ '1': '1 ',
+                                                     \ '2': '2 ',
+                                                     \ '3': '3 ',
+                                                     \ '4': '4 ',
+                                                     \ '5': '5 ',
+                                                     \ '6': '6 ',
+                                                     \ '7': '7 ',
+                                                     \ '8': '8 ',
+                                                     \ '9': '9 '
+                                                     \}
+let g:airline_mode_map = {
+                         \ '__' : '------',
+                         \ 'n'  : 'Normal',
+                         \ 'i'  : 'Insert',
+                         \ 'R'  : 'Replace',
+                         \ 'v'  : 'Visual',
+                         \ 'V'  : 'V-Line',
+                         \ 'c'  : 'Command',
+                         \ '^V' : 'V-Block',
+                         \ 's'  : 'Select',
+                         \ 'S'  : 'S-Line',
+                         \ '^S' : 'S-Block',
+                         \ 't'  : 'Terminal',
+                         \ }
 
 function! AirlineInit()
   let g:airline_section_a = airline#section#create(['mode', ' ', 'branch'])
