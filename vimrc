@@ -1,5 +1,3 @@
-
-""""""""""""""""""""""""""""""
 "----------------------------"
 "---GENERAL CONFIG OPTIONS---"
 "----------------------------"
@@ -76,17 +74,15 @@ nnoremap <C-w>+ <C-w>=|                     " swap window same-height & increase
 nnoremap <leader>bd :bd<CR>|                " delete current buffer
 nmap <Leader>bk :bnext<CR>|                 " move to next buffer
 nmap <Leader>bj :bprev<CR>|                 " move to prev buffer
-nmap <leader>1 <Plug>AirlineSelectTab1      " change to buffer #
-nmap <leader>2 <Plug>AirlineSelectTab2      " change to buffer #
-nmap <leader>3 <Plug>AirlineSelectTab3      " change to buffer #
-nmap <leader>4 <Plug>AirlineSelectTab4      " change to buffer #
-nmap <leader>5 <Plug>AirlineSelectTab5      " change to buffer #
-nmap <leader>6 <Plug>AirlineSelectTab6      " change to buffer #
-nmap <leader>7 <Plug>AirlineSelectTab7      " change to buffer #
-nmap <leader>8 <Plug>AirlineSelectTab8      " change to buffer #
-nmap <leader>9 <Plug>AirlineSelectTab9      " change to buffer #
-
-
+nmap <Leader>1 <Plug>AirlineSelectTab1      " change to buffer #
+nmap <Leader>2 <Plug>AirlineSelectTab2      " change to buffer #
+nmap <Leader>3 <Plug>AirlineSelectTab3      " change to buffer #
+nmap <Leader>4 <Plug>AirlineSelectTab4      " change to buffer #
+nmap <Leader>5 <Plug>AirlineSelectTab5      " change to buffer #
+nmap <Leader>6 <Plug>AirlineSelectTab6      " change to buffer #
+nmap <Leader>7 <Plug>AirlineSelectTab7      " change to buffer #
+nmap <Leader>8 <Plug>AirlineSelectTab8      " change to buffer #
+nmap <Leader>9 <Plug>AirlineSelectTab9      " change to buffer #
 
 "_____________________"
 "___SCROLL/POSITION___"
@@ -115,7 +111,6 @@ nnoremap <Leader>Q :q!<CR>|              " exit window w/o saving
 """""""""""""""
 
 "______________"
-"A
 "___VIM.PLUG___"
 call plug#begin()
     Plug 'scrooloose/nerdtree'                      " file system explorer
@@ -123,12 +118,10 @@ call plug#begin()
     Plug 'vim-airline/vim-airline'                  " improves status bar
     Plug 'vim-airline/vim-airline-themes'           " themes for airline
     Plug 'powerline/fonts'                          " fonts needed for airline symbols
-    "Plug 'bling/vim-bufferline'                     " list buffers in cmd line
     Plug 'junegunn/fzf'                             " command line fuzzy finder
     Plug 'junegunn/fzf.vim'                         " fzf embeded into vim
     Plug 'kana/vim-submode'                         " repeat cmd's with a single press
     Plug 'tpope/vim-fugitive'                       " git wrapper for vim
-    Plug 'tpope/vim-capslock'                       " git wrapper for vim
     "Plug 'vim-syntastic/syntastic'
     Plug 'yuratomo/w3m.vim'                         " w3m for vim
 call plug#end()
@@ -166,7 +159,7 @@ let g:airline#extensions#tabline#buffer_idx_format = {
                                                      \ '7': '7 ',
                                                      \ '8': '8 ',
                                                      \ '9': '9 '
-                                                     \}
+                                                     \ }
 let g:airline_mode_map = {
                          \ '__' : '------',
                          \ 'n'  : 'Normal',
